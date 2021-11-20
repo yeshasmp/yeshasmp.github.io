@@ -1,0 +1,3 @@
+User-agent: *
+Disallow:
+Sitemap: https://yeshasmp.github.io/sitemap.xml
