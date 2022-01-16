@@ -2,6 +2,21 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://yeshasmp.github.io/tags/angular-bootstrapping/</loc>
+    <lastmod>2022-01-16T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://yeshasmp.github.io/posts/angulararchitecture/</loc>
+    <lastmod>2022-01-16T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://yeshasmp.github.io/posts/</loc>
+    <lastmod>2022-01-16T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://yeshasmp.github.io/tags/</loc>
+    <lastmod>2022-01-16T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://yeshasmp.github.io/</loc>
+    <lastmod>2022-01-16T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://yeshasmp.github.io/about/</loc>
   </url><url>
     <loc>https://yeshasmp.github.io/archives/</loc>
@@ -9,9 +24,5 @@
     <loc>https://yeshasmp.github.io/categories/</loc>
   </url><url>
     <loc>https://yeshasmp.github.io/contact/</loc>
-  </url><url>
-    <loc>https://yeshasmp.github.io/tags/</loc>
-  </url><url>
-    <loc>https://yeshasmp.github.io/</loc>
   </url>
 </urlset>
