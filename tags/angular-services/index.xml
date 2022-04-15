@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>Yeshas M P</title>
-    <link>https://yeshasmp.github.io/</link>
-    <description>Recent content on Yeshas M P</description>
+    <title>Angular Services on Yeshas M P</title>
+    <link>https://yeshasmp.github.io/tags/angular-services/</link>
+    <description>Recent content in Angular Services on Yeshas M P</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Fri, 15 Apr 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://yeshasmp.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 15 Apr 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://yeshasmp.github.io/tags/angular-services/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Demystifying Angular Services and Dependency Injection</title>
       <link>https://yeshasmp.github.io/posts/angular-services/</link>
@@ -214,172 +214,6 @@
 <p>Stay tuned for more such interesting articles!</p>
 ]]></content:encoded>
     </item>
-    
-    <item>
-      <title>Angular Bootstrapping : How does Angular work under the hood?</title>
-      <link>https://yeshasmp.github.io/posts/angular-bootstrapping/</link>
-      <pubDate>Sun, 16 Jan 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://yeshasmp.github.io/posts/angular-bootstrapping/</guid>
-      <description>Guide to Angular Bootstrapping</description>
-      <content:encoded><![CDATA[<p>In this article we are going to explore together how Angular apps work behind the scenes. At first, we will understand various workspace and application configuration files and finally we will piece together all the files how they are involved in bootstraping.</p>
-<h1 id="angular-project-structure">Angular Project Structure</h1>
-<p>Before understanding how Angular works under the hood, it&rsquo;s necessary to understand the workspace structure and application configuration involved in the process. Every Angular apps works in the context of workspace. By default <code>ng new app_name</code> command generates a skeleton application at root of workspace in below fashion -</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">workspace</span><span style="color:#f92672">/</span>(<span style="color:#a6e22e">folder</span> <span style="color:#a6e22e">name</span> <span style="color:#a6e22e">is</span> <span style="color:#a6e22e">app_name</span> <span style="color:#a6e22e">given</span> <span style="color:#a6e22e">at</span> <span style="color:#a6e22e">cmd</span>)
-  ...             (<span style="color:#a6e22e">workspace</span><span style="color:#f92672">-</span><span style="color:#a6e22e">wide</span> <span style="color:#a6e22e">config</span> <span style="color:#a6e22e">files</span>)
-    <span style="color:#a6e22e">src</span><span style="color:#f92672">/</span>        <span style="color:#f92672">--</span>(<span style="color:#a6e22e">source</span> <span style="color:#a6e22e">and</span> <span style="color:#a6e22e">support</span> <span style="color:#a6e22e">files</span> <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">application</span>)
-</code></pre></div><p>The above structure is usually referred as &lsquo;multi-repo&rsquo; development style where each application has it&rsquo;s own workspace, &lsquo;workspace&rsquo; folder consists of workspace specific configuration files where as &lsquo;src&rsquo; folder consists of application specific files and folders.</p>
-<h2 id="workspace-configuration-files">Workspace configuration files</h2>
-<ol>
-<li>angular.json - It specifies workspace-wide and project specific defaults for build and development. For instance, You can have &lsquo;n&rsquo; number of npm packages installed in your workspace, but you can specify which packages you want in your application in angular.json</li>
-<li>package.json - It consists metadata of project and is used for managing the project&rsquo;s dependencies, scripts, npm package versions and many more.</li>
-<li>package-lock.json - It provides information of all npm packages installed in npm_modules folder such as package version, hash to verify the package integrity and list of its dependencies.</li>
-<li>tsconfig.json - Since Angular apps are written using typescript, this file specifies root files and compiler options required to compile our application.</li>
-</ol>
-<h2 id="application-configuration-files">Application configuration files</h2>
-<ol>
-<li>index.html - This is our main HTML page which is rendered and is displayed to user in browser.</li>
-<li>main.ts - This is responsible for compiling all components and template files with JIT(Just In Time) compiler. We can also use AOT(Ahead Of Time) compiler by adding &ndash;aot flag to <code>ng build</code> or <code>ng serve</code> CLI commands(Recommended for production environment).</li>
-</ol>
-<p>For more detailed explanation of all config files go through official <a href="https://angular.io/guide/file-structure">Angular Docs</a></p>
-<h1 id="angular-bootstrapping">Angular Bootstrapping</h1>
-<p>Some of you all might have wondered when I used the term &lsquo;Bootstraping&rsquo; earlier. In Angular eco-system <code>Bootstraping</code> is technique of initializing root module and loading root component into index.html file. When we run <code>ng serve</code> or <code>ng build</code> multiple things happen in the background. Below steps provide a brief overview of bootstrapping process-</p>
-<p><img loading="lazy" src="/images/angular-bootstrapping.png#center" alt="Angular Bootstrapping"  />
-</p>
-<ol>
-<li>Compilation of application codes using <code>tsc</code> typescript compiler.</li>
-<li>Bundling and minification of javascript files by Webpack.</li>
-<li>Deployment and bootstrapping.</li>
-<li>Run JIT compiler for all components, directives and pipes.</li>
-<li>Render index.html in browser.</li>
-</ol>
-<p>The only difference between JIT and AOT compiler is that in AOT compiler, compilation takes place during build time rather than at runtime in browser. Let&rsquo;s go through above steps in bit more detail -</p>
-<ol>
-<li>angular.json consist of multiple configuration properties related build and development. The one&rsquo;s which are interesting to us are &lsquo;builder&rsquo;, &lsquo;index&rsquo; and &lsquo;main&rsquo; properties under &lsquo;build&rsquo; as shown below.</li>
-</ol>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#e6db74">&#34;build&#34;</span><span style="color:#f92672">:</span> {
-          <span style="color:#e6db74">&#34;builder&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;@angular-devkit/build-angular:browser&#34;</span>,
-          <span style="color:#e6db74">&#34;options&#34;</span><span style="color:#f92672">:</span> {
-            .......
-            <span style="color:#e6db74">&#34;index&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;src/index.html&#34;</span>,
-            <span style="color:#e6db74">&#34;main&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;src/main.ts&#34;</span>,
-            .......
-          }
-</code></pre></div><p>When we run <code>ng serve</code> or <code>ng build</code> Angular CLI looks at angular.json for these properties. &lsquo;builder&rsquo; property is saying to Angular CLI where it can find Architect builders to build Angular apps for browser environment. where as our &lsquo;index&rsquo; and &lsquo;main&rsquo; properties specifies index.html file to be rendered in browser and main.ts which handles bootstrapping process. Then Angular CLI calls <code>tsc</code> typescript compiler to transpile all the typescript codes into javascript codes using configuration provided in <code>tsconfig.json</code>.</p>
-<ol start="2">
-<li>If we look at index.html file of newly generated Angular app, it only has <code>&lt;app-root&gt;</code> element inside <code>&lt;body&gt;</code> tag. <code>&lt;app-root&gt;</code> is root component template which is injected at runtime. Apart from these there is neither any javascript file or any reference to style links.</li>
-</ol>
-<pre tabindex="0"><code>&lt;!DOCTYPE html&gt;
-&lt;html lang=&quot;en&quot;&gt;
-&lt;head&gt;
-  &lt;meta charset=&quot;utf-8&quot;&gt;
-  &lt;title&gt;SampleApp&lt;/title&gt;
-  &lt;base href=&quot;/&quot;&gt;
-  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
-  &lt;link rel=&quot;icon&quot; type=&quot;image/x-icon&quot; href=&quot;favicon.ico&quot;&gt;
-  &lt;link rel=&quot;stylesheet&quot; href=&quot;styles.a7a7ed6d783a0950.css&quot; media=&quot;print&quot; onload=&quot;this.media='all'&quot;&gt;
-  &lt;noscript&gt;
-    &lt;link rel=&quot;stylesheet&quot; href=&quot;styles.a7a7ed6d783a0950.css&quot;&gt;
-  &lt;/noscript&gt;
-&lt;/head&gt;
-&lt;body&gt;
-  &lt;app-root&gt;&lt;/app-root&gt;
-  &lt;script src=&quot;runtime.0298365924d274ea.js&quot; type=&quot;module&quot;&gt;&lt;/script&gt;
-  &lt;script src=&quot;polyfills.daf14d28d6c3636f.js&quot; type=&quot;module&quot;&gt;&lt;/script&gt;
-  &lt;script src=&quot;main.94e04dd2c597738f.js&quot; type=&quot;module&quot;&gt;&lt;/script&gt;
-&lt;/body&gt;
-&lt;/html&gt;
-</code></pre><p>After transpiling all the typescript codes, Angular CLI then uses Webpack, a module bundler to minify and bundle all the files which are then added as reference into index.html file. Let&rsquo;s look at each of these files :</p>
-<ol>
-<li>runtime.js - It contains utility codes used by Webpack to load other files.</li>
-<li>vendor.js - It contains 3rd party library codes which are imported in our ngModules.</li>
-<li>polyfill.js - It contains polyfills required to make our app compatible among different browsers.</li>
-<li>main.js - It contains all the javascript codes written in our application.</li>
-</ol>
-<p>When we run <code>ng serve</code> application codes are built at local environment and served from memory, where as <code>ng build</code> outputs all the transpiled codes into dist folder from where it can be deployed to any hosting vendor and served from there.</p>
-<ol start="3">
-<li>At runtime in browser, main.js is responsible for bootstraping our Angular apps. It contains all our application codes and how to compile and run it. We earlier learnt Angular CLI looks at angular.json to find main.ts file. If we look at main.ts file it consist couple of import statements along with some lines of code.</li>
-</ol>
-<pre tabindex="0"><code>import { enableProdMode } from '@angular/core';
-import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-
-import { AppModule } from './app/app.module';
-import { environment } from './environments/environment';
-
-if (environment.production) {
-  enableProdMode();
-}
-
-platformBrowserDynamic().bootstrapModule(AppModule)
-  .catch(err =&gt; console.error(err));
-</code></pre><p>Apart from import statements, we are having code to enable production mode if target environment is production but the line which is interesting to us is <code>platformBrowserDynamic().bootstrapModule(AppModule);</code>. Though it&rsquo;s single line, lot of action takes place when executed by Angular CLI.</p>
-<ol>
-<li>At first, We are importing <code>platformBrowserDynamic</code> module from <code>@angular/platform-browser-dynamic</code> library.</li>
-<li>Then we are calling <code>platformBrowserDynamic().bootstrapModule(AppModule)</code> by passing our root AppModule as parameter.</li>
-<li>Internally <code>bootstrapModule</code> creates an instance of compiler <code>JIT compiler</code>, where it crawls through all components, directives and pipes declared in AppModule @NgModule decorator and other feature modules imported in AppModule.</li>
-<li>Once it finds Component having &lsquo;app-root&rsquo; as its selector, it will render the component template in index.html.</li>
-</ol>
-<p>But how does Angular know where to find template for <code>&lt;app-root&gt;</code> in index.html? Let&rsquo;s find out in next section.</p>
-<ol start="4">
-<li>From the root AppModule we passed earlier, it refers @ngModule decorator in AppModule. @NgModule decorator contains metadata of all the components, directives and pipes under it along with other feature modules imported under AppModule. It also specifies services which are available at app-level under providers and bootstrap property specifying the root component as shown below.</li>
-</ol>
-<pre tabindex="0"><code>import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-
-import { AppComponent } from './app.component';
-
-@NgModule({
-  declarations: [
-    AppComponent
-  ],
-  imports: [
-    BrowserModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
-})
-export class AppModule { }
-</code></pre><ol start="5">
-<li>
-<p>Once it finds the root AppComponent, it then refers @Component decorator in AppComponent. @Component contains metadata of below properties :</p>
-<ol>
-<li>selector : It is used to identify all the components in Angular app.</li>
-<li>templateUrl : It provides path to component HTML template file.</li>
-<li>styleUrls : It provides path to component styles.</li>
-</ol>
-</li>
-</ol>
-<pre tabindex="0"><code>import { Component } from '@angular/core';
-
-@Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
-})
-export class AppComponent {
-  title = 'SampleApp';
-}
-</code></pre><p>There it is! <code>app-root</code> specified in selector matches with <code>app-root</code> in index.html. It then finds HTML template along with styles and renders the same in index.html where <code>app-root</code> is present.</p>
-<h1 id="conclusion">Conclusion</h1>
-<p>Though above explanation is not complete, I hope it gave you brief idea on what&rsquo;s happening under the hood when we run Angular app. Stay tuned for more such interesting articles!</p>
-]]></content:encoded>
-    </item>
-    
-    <item>
-      <title>About</title>
-      <link>https://yeshasmp.github.io/about/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://yeshasmp.github.io/about/</guid>
-      <description>About</description>
-      <content:encoded><![CDATA[<p><a href="https://yeshasmp.github.io">https://yeshasmp.github.io</a> is a Personal technology blog of Yeshas M P. Yeshas is working Associate Software Engineer at Accenture India Pvt. Ltd. Yeshas focuses in Angular and various Microsoft technologies namely .Net Core, ASP.Net MVC, SQL Server, Azure DEV OPS. Stay tuned for interesting articles here!</p>
-<hr>
-<h1 id="disclaimer">Disclaimer</h1>
-<hr>
-<p>This is my personal blog. The opinions expressed here represent my own and not those of my current employer, previous employers and/or any other companies. For accuracy and official reference refer to respective official documents.</p>
-]]></content:encoded>
-    </item>
-    
     
   </channel>
 </rss>

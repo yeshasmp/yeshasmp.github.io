@@ -8,10 +8,10 @@
     <lastBuildDate>Sun, 16 Jan 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://yeshasmp.github.io/tags/angular-bootstrapping/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Angular Bootstrapping : How does Angular work under the hood?</title>
-      <link>https://yeshasmp.github.io/posts/angularbootstrapping/</link>
+      <link>https://yeshasmp.github.io/posts/angular-bootstrapping/</link>
       <pubDate>Sun, 16 Jan 2022 00:00:00 +0000</pubDate>
       
-      <guid>https://yeshasmp.github.io/posts/angularbootstrapping/</guid>
+      <guid>https://yeshasmp.github.io/posts/angular-bootstrapping/</guid>
       <description>Guide to Angular Bootstrapping</description>
       <content:encoded><![CDATA[<p>In this article we are going to explore together how Angular apps work behind the scenes. At first, we will understand various workspace and application configuration files and finally we will piece together all the files how they are involved in bootstraping.</p>
 <h1 id="angular-project-structure">Angular Project Structure</h1>
@@ -35,7 +35,7 @@
 <p>For more detailed explanation of all config files go through official <a href="https://angular.io/guide/file-structure">Angular Docs</a></p>
 <h1 id="angular-bootstrapping">Angular Bootstrapping</h1>
 <p>Some of you all might have wondered when I used the term &lsquo;Bootstraping&rsquo; earlier. In Angular eco-system <code>Bootstraping</code> is technique of initializing root module and loading root component into index.html file. When we run <code>ng serve</code> or <code>ng build</code> multiple things happen in the background. Below steps provide a brief overview of bootstrapping process-</p>
-<p><img loading="lazy" src="/images/angular_bootstrapping.png" alt="Angular Bootstrapping"  />
+<p><img loading="lazy" src="/images/angular-bootstrapping.png#center" alt="Angular Bootstrapping"  />
 </p>
 <ol>
 <li>Compilation of application codes using <code>tsc</code> typescript compiler.</li>
