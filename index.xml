@@ -87,7 +87,7 @@
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript"><span style="color:#a6e22e">providers</span> <span style="color:#f92672">:</span> [{ <span style="color:#a6e22e">provide</span> : <span style="color:#66d9ef">AppService</span> , <span style="color:#a6e22e">useClass</span> : <span style="color:#66d9ef">AppService</span> }]
 </code></pre></div><p><code>provide</code> property holds the injection token while <code>provider</code> property holds the instruction on how to create the dependency. Injection token can either be a type, a string or an injection token itself. We can not only provide class as dependency but also provide direct value or value returned from function or function itself using <code>useValue</code>, <code>useFactory</code> and <code>useExisting</code> provider properties. Visit <a href="https://angular.io/guide/dependency-injection-providers">Angular Docs</a> to know more how you use other provider types.</p>
 <p>Now let&rsquo;s breakdown how Angular would resolve the dependency using provider and injector in below steps for better understanding -</p>
-<p><img loading="lazy" src="/images/hierarchical-tree-flowchart.jpg#center" alt="Hierarchical Injection"  />
+<p><img loading="lazy" src="/images/hierarchical-tree-flowchart.webp#center" alt="Hierarchical Injection"  />
 </p>
 <ol>
 <li>
@@ -172,13 +172,13 @@
 
 }
 </code></pre></div><p>We will then display the random number in both app and home component by calling getRandomNumber method and passing the value to view. When we load the application we can see both components get the same random number as they both received same single instance of <code>AppService</code> from <code>Root Module injector</code>. This proves Angular services are singleton when they are registered only in <code>Root Module provider</code>.</p>
-<p><img loading="lazy" src="/images/singleton.jpg#center" alt="Angular singleton service"  />
+<p><img loading="lazy" src="/images/singleton.webp#center" alt="Angular singleton service"  />
 </p>
 <p>Now let&rsquo;s register <code>AppService</code> also in <code>HomeComponent</code> provider and run the app. App and Home component displays two different random numbers because they both received two different instances of <code>AppService</code>. Thus we can say Angular services are not singleton when they are provided at different levels.</p>
-<p><img loading="lazy" src="/images/non-singleton.jpg#center" alt="Angular non-singleton service"  />
+<p><img loading="lazy" src="/images/non-singleton.webp#center" alt="Angular non-singleton service"  />
 </p>
 <p>But how did two instance of Angular services got created?</p>
-<p><img loading="lazy" src="/images/hierarchical-injection-tree.jpg#center" alt="Angular Hierarchical Injection"  />
+<p><img loading="lazy" src="/images/hierarchical-injection-tree.webp#center" alt="Angular Hierarchical Injection"  />
 </p>
 <ol>
 <li>
@@ -244,7 +244,7 @@
 <p>For more detailed explanation of all config files go through official <a href="https://angular.io/guide/file-structure">Angular Docs</a></p>
 <h1 id="angular-bootstrapping">Angular Bootstrapping</h1>
 <p>Some of you all might have wondered when I used the term &lsquo;Bootstraping&rsquo; earlier. In Angular eco-system <code>Bootstraping</code> is technique of initializing root module and loading root component into index.html file. When we run <code>ng serve</code> or <code>ng build</code> multiple things happen in the background. Below steps provide a brief overview of bootstrapping process-</p>
-<p><img loading="lazy" src="/images/angular-bootstrapping.png#center" alt="Angular Bootstrapping"  />
+<p><img loading="lazy" src="/images/angular-bootstrapping.webp#center" alt="Angular Bootstrapping"  />
 </p>
 <ol>
 <li>Compilation of application codes using <code>tsc</code> typescript compiler.</li>

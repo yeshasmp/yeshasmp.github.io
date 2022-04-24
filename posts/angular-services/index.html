@@ -8,8 +8,7 @@
 <meta name=description content="Guide to Angular Services and Dependency Injection">
 <meta name=author content="Yeshas M P">
 <link rel=canonical href=https://yeshasmp.github.io/posts/angular-services/>
-<link crossorigin=anonymous href=/assets/css/stylesheet.min.fda78ff6391c19c3ff97d0ecfcdb14a72b19b311e99388db7bf95506e2ab8ab7.css integrity="sha256-/aeP9jkcGcP/l9Ds/NsUpysZsxHpk4jbe/lVBuKrirc=" rel="preload stylesheet" as=style>
-<script defer crossorigin=anonymous src=/assets/js/highlight.min.7680afc38aa6b15ddf158a4f3780b7b1f7dde7e91d26f073e6229bb7a0793c92.js integrity="sha256-doCvw4qmsV3fFYpPN4C3sffd5+kdJvBz5iKbt6B5PJI=" onload=hljs.initHighlightingOnLoad()></script>
+<link crossorigin=anonymous href=/assets/css/stylesheet.min.1bb9a68f17266138bab68f7d666a144f60b463f300c2da4d14ded8a232916de1.css integrity="sha256-G7mmjxcmYTi6to99ZmoUT2C0Y/MAwtpNFN7YojKRbeE=" rel="preload stylesheet" as=style>
 <link rel=icon href=https://yeshasmp.github.io/favicon.ico>
 <link rel=icon type=image/png sizes=16x16 href=https://yeshasmp.github.io/favicon-16x16.png>
 <link rel=icon type=image/png sizes=32x32 href=https://yeshasmp.github.io/favicon-32x32.png>
@@ -164,7 +163,7 @@ Guide to Angular Services and Dependency Injection
 <div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-typescript data-lang=typescript><span style=color:#a6e22e>providers</span> <span style=color:#f92672>:</span> [{ <span style=color:#a6e22e>provide</span> : <span style=color:#66d9ef>AppService</span> , <span style=color:#a6e22e>useClass</span> : <span style=color:#66d9ef>AppService</span> }]
 </code></pre></div><p><code>provide</code> property holds the injection token while <code>provider</code> property holds the instruction on how to create the dependency. Injection token can either be a type, a string or an injection token itself. We can not only provide class as dependency but also provide direct value or value returned from function or function itself using <code>useValue</code>, <code>useFactory</code> and <code>useExisting</code> provider properties. Visit <a href=https://angular.io/guide/dependency-injection-providers>Angular Docs</a> to know more how you use other provider types.</p>
 <p>Now let&rsquo;s breakdown how Angular would resolve the dependency using provider and injector in below steps for better understanding -</p>
-<p><img loading=lazy src=/images/hierarchical-tree-flowchart.jpg#center alt="Hierarchical Injection">
+<p><img loading=lazy src=/images/hierarchical-tree-flowchart.webp#center alt="Hierarchical Injection">
 </p>
 <ol>
 <li>
@@ -249,13 +248,13 @@ Guide to Angular Services and Dependency Injection
 
 }
 </code></pre></div><p>We will then display the random number in both app and home component by calling getRandomNumber method and passing the value to view. When we load the application we can see both components get the same random number as they both received same single instance of <code>AppService</code> from <code>Root Module injector</code>. This proves Angular services are singleton when they are registered only in <code>Root Module provider</code>.</p>
-<p><img loading=lazy src=/images/singleton.jpg#center alt="Angular singleton service">
+<p><img loading=lazy src=/images/singleton.webp#center alt="Angular singleton service">
 </p>
 <p>Now let&rsquo;s register <code>AppService</code> also in <code>HomeComponent</code> provider and run the app. App and Home component displays two different random numbers because they both received two different instances of <code>AppService</code>. Thus we can say Angular services are not singleton when they are provided at different levels.</p>
-<p><img loading=lazy src=/images/non-singleton.jpg#center alt="Angular non-singleton service">
+<p><img loading=lazy src=/images/non-singleton.webp#center alt="Angular non-singleton service">
 </p>
 <p>But how did two instance of Angular services got created?</p>
-<p><img loading=lazy src=/images/hierarchical-injection-tree.jpg#center alt="Angular Hierarchical Injection">
+<p><img loading=lazy src=/images/hierarchical-injection-tree.webp#center alt="Angular Hierarchical Injection">
 </p>
 <ol>
 <li>

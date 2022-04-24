@@ -35,7 +35,7 @@
 <p>For more detailed explanation of all config files go through official <a href="https://angular.io/guide/file-structure">Angular Docs</a></p>
 <h1 id="angular-bootstrapping">Angular Bootstrapping</h1>
 <p>Some of you all might have wondered when I used the term &lsquo;Bootstraping&rsquo; earlier. In Angular eco-system <code>Bootstraping</code> is technique of initializing root module and loading root component into index.html file. When we run <code>ng serve</code> or <code>ng build</code> multiple things happen in the background. Below steps provide a brief overview of bootstrapping process-</p>
-<p><img loading="lazy" src="/images/angular-bootstrapping.png#center" alt="Angular Bootstrapping"  />
+<p><img loading="lazy" src="/images/angular-bootstrapping.webp#center" alt="Angular Bootstrapping"  />
 </p>
 <ol>
 <li>Compilation of application codes using <code>tsc</code> typescript compiler.</li>
