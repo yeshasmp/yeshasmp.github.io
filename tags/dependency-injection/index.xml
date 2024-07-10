@@ -5,6 +5,7 @@
     <link>https://yeshasmp.github.io/tags/dependency-injection/</link>
     <description>Recent content in Dependency Injection on Yeshas M P</description>
     <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
     <lastBuildDate>Fri, 15 Apr 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://yeshasmp.github.io/tags/dependency-injection/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Demystifying Angular Services and Dependency Injection</title>
@@ -26,36 +27,36 @@
 <li>It&rsquo;s easier maintain and perform code updates when required.</li>
 </ol>
 <h3 id="angular-service-example">Angular Service Example</h3>
-<p>We can generate Angular Service in Angular CLI using <code>ng g s AppService</code> where &lsquo;g&rsquo; and &rsquo;s' is shorthand form for &lsquo;generate service&rsquo;.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript"><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">Injectable</span> } <span style="color:#66d9ef">from</span> <span style="color:#e6db74">&#39;@angular/core&#39;</span>;
-
-<span style="color:#66d9ef">@Injectable</span>({
-  <span style="color:#a6e22e">providedIn</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;root&#39;</span>
-})
-
-<span style="color:#66d9ef">export</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">AppService</span> {
-  <span style="color:#66d9ef">constructor</span>() { }
-  <span style="color:#a6e22e">alertMsg</span>(<span style="color:#a6e22e">msg</span> : <span style="color:#66d9ef">string</span>) {
-      <span style="color:#a6e22e">alert</span>(<span style="color:#a6e22e">msg</span>);
-  }
-}
-</code></pre></div><p>Above service has method to launch alert popup with custom message. <code>AppComponent</code> can request <code>AppService</code> in it&rsquo;s constructor and call the alertMsg method as shown below.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript"><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">Component</span> } <span style="color:#66d9ef">from</span> <span style="color:#e6db74">&#39;@angular/core&#39;</span>;
-<span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">AppService</span> } <span style="color:#66d9ef">from</span> <span style="color:#e6db74">&#39;../app.service&#39;</span>;
-
-<span style="color:#66d9ef">@Component</span>({
-  <span style="color:#a6e22e">selector</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;app-root&#39;</span>,
-  <span style="color:#a6e22e">templateUrl</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;./app.component.html&#39;</span>,
-  <span style="color:#a6e22e">styleUrls</span><span style="color:#f92672">:</span> [<span style="color:#e6db74">&#39;./app.component.css&#39;</span>]
-})
-
-<span style="color:#66d9ef">export</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">AppComponent</span> {
-  <span style="color:#66d9ef">constructor</span>(<span style="color:#66d9ef">private</span> <span style="color:#a6e22e">appService</span>:<span style="color:#66d9ef">AppService</span>){
-      <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">appService</span>.<span style="color:#a6e22e">alertMsg</span>(<span style="color:#e6db74">&#34;App Component launched&#34;</span>);
-  }
-}
-}
-</code></pre></div><p>By default, Angular services are singleton. When services are registered either in provider array of root module or with providedIn value of &lsquo;root&rsquo; or &lsquo;any&rsquo; in the service itself there&rsquo;s only single instance of service available throughout the application.</p>
+<p>We can generate Angular Service in Angular CLI using <code>ng g s AppService</code> where &lsquo;g&rsquo; and &rsquo;s&rsquo; is shorthand form for &lsquo;generate service&rsquo;.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-typescript" data-lang="typescript"><span style="display:flex;"><span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">Injectable</span> } <span style="color:#66d9ef">from</span> <span style="color:#e6db74">&#39;@angular/core&#39;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">@Injectable</span>({
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">providedIn</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;root&#39;</span>
+</span></span><span style="display:flex;"><span>})
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">AppService</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">constructor</span>() { }
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">alertMsg</span>(<span style="color:#a6e22e">msg</span> : <span style="color:#66d9ef">string</span>) {
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">alert</span>(<span style="color:#a6e22e">msg</span>);
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Above service has method to launch alert popup with custom message. <code>AppComponent</code> can request <code>AppService</code> in it&rsquo;s constructor and call the alertMsg method as shown below.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-typescript" data-lang="typescript"><span style="display:flex;"><span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">Component</span> } <span style="color:#66d9ef">from</span> <span style="color:#e6db74">&#39;@angular/core&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">AppService</span> } <span style="color:#66d9ef">from</span> <span style="color:#e6db74">&#39;../app.service&#39;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">@Component</span>({
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">selector</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;app-root&#39;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">templateUrl</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;./app.component.html&#39;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">styleUrls</span><span style="color:#f92672">:</span> [<span style="color:#e6db74">&#39;./app.component.css&#39;</span>]
+</span></span><span style="display:flex;"><span>})
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">AppComponent</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">constructor</span>(<span style="color:#66d9ef">private</span> <span style="color:#a6e22e">appService</span>:<span style="color:#66d9ef">AppService</span>){
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">appService</span>.<span style="color:#a6e22e">alertMsg</span>(<span style="color:#e6db74">&#34;App Component launched&#34;</span>);
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>By default, Angular services are singleton. When services are registered either in provider array of root module or with providedIn value of &lsquo;root&rsquo; or &lsquo;any&rsquo; in the service itself there&rsquo;s only single instance of service available throughout the application.</p>
 <p>We understood how Angular service could be called in any component, but did you wonder how did <code>AppComponent</code> got an instance of <code>AppService</code>? For any class to execute another class method it needs to create an object of that class and call the method through it unless it&rsquo;s static. But where did <code>AppComponent</code> create any instance of <code>AppService</code>?</p>
 <p>Let&rsquo;s move into next section to know how <code>AppComponent</code> got an instance of <code>AppService</code>.</p>
 <h2 id="dependency-injection">Dependency Injection</h2>
@@ -68,24 +69,24 @@
 <ol>
 <li>Using providedIn property inside the <code>@Injectable</code> decorator of the service class itself. This is preferred way of registering a service as stated by Angular Docs since it tree shakable meaning Angular would include this service during build time if and only any component requests it. Otherwise this is excluded from the build which helps in improving the performance of our app.</li>
 </ol>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript"><span style="color:#66d9ef">@Injectable</span>({
-  <span style="color:#a6e22e">providedIn</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;root&#39;</span>
-})
-</code></pre></div><ol start="2">
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-typescript" data-lang="typescript"><span style="display:flex;"><span><span style="color:#66d9ef">@Injectable</span>({
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">providedIn</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;root&#39;</span>
+</span></span><span style="display:flex;"><span>})
+</span></span></code></pre></div><ol start="2">
 <li>By registering in provider array at Module level, Component level or Directive level. Service provided like below is not tree shakable and would be included in the build even if no component requests it.</li>
 </ol>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript"><span style="color:#a6e22e">providers</span><span style="color:#f92672">:</span>  [ <span style="color:#a6e22e">AppService</span> ]
-</code></pre></div><ol start="3">
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-typescript" data-lang="typescript"><span style="display:flex;"><span><span style="color:#a6e22e">providers</span><span style="color:#f92672">:</span>  [ <span style="color:#a6e22e">AppService</span> ]
+</span></span></code></pre></div><ol start="3">
 <li>By manually registering using <code>@Inject</code> inside constructor of consumer.</li>
 </ol>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript"><span style="color:#66d9ef">constructor</span>(<span style="color:#66d9ef">@Inject</span>(<span style="color:#a6e22e">AppService</span>) <span style="color:#66d9ef">private</span> <span style="color:#a6e22e">appService</span>)
-</code></pre></div><p>A <code>Provider</code> is an object which holds list of all services registered in provider array. Angular creates provider and injector instance for root module and for each lazy loaded module. It also creates injector instance for all components and directives. Each <code>Injector</code> holds the provider list of all dependencies registered at respective component, directive or modules.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-typescript" data-lang="typescript"><span style="display:flex;"><span><span style="color:#66d9ef">constructor</span>(<span style="color:#66d9ef">@Inject</span>(<span style="color:#a6e22e">AppService</span>) <span style="color:#66d9ef">private</span> <span style="color:#a6e22e">appService</span>)
+</span></span></code></pre></div><p>A <code>Provider</code> is an object which holds list of all services registered in provider array. Angular creates provider and injector instance for root module and for each lazy loaded module. It also creates injector instance for all components and directives. Each <code>Injector</code> holds the provider list of all dependencies registered at respective component, directive or modules.</p>
 <p>Note - Angular doesn&rsquo;t create injector instance for <code>Eagerly Loaded modules</code> therefore, the services registered at those modules will be configured in <code>Root Module injector</code>.</p>
 <p>Typical service when registered in provider array at module or component would look like below -</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript"><span style="color:#a6e22e">provders</span> <span style="color:#f92672">:</span> [<span style="color:#a6e22e">AppService</span>]
-</code></pre></div><p>which is shorthand property when expanded would look like</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript"><span style="color:#a6e22e">providers</span> <span style="color:#f92672">:</span> [{ <span style="color:#a6e22e">provide</span> : <span style="color:#66d9ef">AppService</span> , <span style="color:#a6e22e">useClass</span> : <span style="color:#66d9ef">AppService</span> }]
-</code></pre></div><p><code>provide</code> property holds the injection token while <code>provider</code> property holds the instruction on how to create the dependency. Injection token can either be a type, a string or an injection token itself. We can not only provide class as dependency but also provide direct value or value returned from function or function itself using <code>useValue</code>, <code>useFactory</code> and <code>useExisting</code> provider properties. Visit <a href="https://angular.io/guide/dependency-injection-providers">Angular Docs</a> to know more how you use other provider types.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-typescript" data-lang="typescript"><span style="display:flex;"><span><span style="color:#a6e22e">provders</span> <span style="color:#f92672">:</span> [<span style="color:#a6e22e">AppService</span>]
+</span></span></code></pre></div><p>which is shorthand property when expanded would look like</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-typescript" data-lang="typescript"><span style="display:flex;"><span><span style="color:#a6e22e">providers</span> <span style="color:#f92672">:</span> [{ <span style="color:#a6e22e">provide</span> : <span style="color:#66d9ef">AppService</span> , <span style="color:#a6e22e">useClass</span> : <span style="color:#66d9ef">AppService</span> }]
+</span></span></code></pre></div><p><code>provide</code> property holds the injection token while <code>provider</code> property holds the instruction on how to create the dependency. Injection token can either be a type, a string or an injection token itself. We can not only provide class as dependency but also provide direct value or value returned from function or function itself using <code>useValue</code>, <code>useFactory</code> and <code>useExisting</code> provider properties. Visit <a href="https://angular.io/guide/dependency-injection-providers">Angular Docs</a> to know more how you use other provider types.</p>
 <p>Now let&rsquo;s breakdown how Angular would resolve the dependency using provider and injector in below steps for better understanding -</p>
 <p><img loading="lazy" src="/images/hierarchical-tree-flowchart.webp#center" alt="Hierarchical Injection"  />
 </p>
@@ -112,66 +113,66 @@
 <p><img loading="lazy" src="/images/null-error.jpg#center" alt="Angular service null injector error"  />
 </p>
 <p>We can control the dependency resolution using @Skip, @SkipSelf, @Optional and @Host resolution modifiers. We can avoid the above null injector error when dependency is tagged with <code>@Optional</code> modifier in the requested <code>AppComponent</code> constructor like below. Then Angular would return null instead of throwing error.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript"><span style="color:#66d9ef">constructor</span>(<span style="color:#66d9ef">@Optional</span> <span style="color:#66d9ef">private</span> <span style="color:#a6e22e">appService</span> : <span style="color:#66d9ef">AppService</span>)
-</code></pre></div><h2 id="are-angular-services-singleton">Are Angular Services singleton?</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-typescript" data-lang="typescript"><span style="display:flex;"><span><span style="color:#66d9ef">constructor</span>(<span style="color:#66d9ef">@Optional</span> <span style="color:#66d9ef">private</span> <span style="color:#a6e22e">appService</span> : <span style="color:#66d9ef">AppService</span>)
+</span></span></code></pre></div><h2 id="are-angular-services-singleton">Are Angular Services singleton?</h2>
 <p>Let&rsquo;s consider below code scenario to understand Hierarchical injection of services and whether Angular services are singleton or not. Head to <a href="https://stackblitz.com/edit/angular-ivy-r6cden">Stackblitz</a> to experiment and play below code example.</p>
 <p>We will create an <code>AppService</code> which generates random number when it&rsquo;s instance is created and return that value through method. Initially we will register <code>AppService</code> only in root module using <code>providedIn</code> value as &lsquo;root&rsquo; -</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript"><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">Injectable</span> } <span style="color:#66d9ef">from</span> <span style="color:#e6db74">&#39;@angular/core&#39;</span>;
-
-<span style="color:#66d9ef">@Injectable</span>({
-  <span style="color:#a6e22e">providedIn</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;root&#39;</span>
-})
-<span style="color:#66d9ef">export</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">AppService</span> {
-
-  <span style="color:#a6e22e">sharedValue</span> : <span style="color:#66d9ef">number</span>;
-
-  <span style="color:#66d9ef">constructor</span>() { 
-    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">sharedValue</span> <span style="color:#f92672">=</span> Math.<span style="color:#a6e22e">floor</span>(Math.<span style="color:#a6e22e">random</span>() <span style="color:#f92672">*</span> <span style="color:#ae81ff">5</span>);
-    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">info</span>(<span style="color:#e6db74">&#34;AppService instance has been created!&#34;</span>)
-  }
-
-  <span style="color:#a6e22e">getSharedValue</span>(){
-    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">sharedValue</span>;
-  }
-}
-</code></pre></div><p>Let&rsquo;s create two more components - <code>AppComponent</code> and <code>HomeComponent</code> a child of <code>AppComponent</code> and request the <code>AppService</code> in both the component constrcutor.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-typescript" data-lang="typescript"><span style="display:flex;"><span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">Injectable</span> } <span style="color:#66d9ef">from</span> <span style="color:#e6db74">&#39;@angular/core&#39;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">@Injectable</span>({
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">providedIn</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;root&#39;</span>
+</span></span><span style="display:flex;"><span>})
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">AppService</span> {
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">sharedValue</span> : <span style="color:#66d9ef">number</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">constructor</span>() { 
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">sharedValue</span> <span style="color:#f92672">=</span> Math.<span style="color:#a6e22e">floor</span>(Math.<span style="color:#a6e22e">random</span>() <span style="color:#f92672">*</span> <span style="color:#ae81ff">5</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">info</span>(<span style="color:#e6db74">&#34;AppService instance has been created!&#34;</span>)
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">getSharedValue</span>(){
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">sharedValue</span>;
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Let&rsquo;s create two more components - <code>AppComponent</code> and <code>HomeComponent</code> a child of <code>AppComponent</code> and request the <code>AppService</code> in both the component constrcutor.</p>
 <p><code>AppComponent</code> -</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript"><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">Component</span> } <span style="color:#66d9ef">from</span> <span style="color:#e6db74">&#39;@angular/core&#39;</span>;
-<span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">AppService</span> } <span style="color:#66d9ef">from</span> <span style="color:#e6db74">&#39;./app.service&#39;</span>;
-
-<span style="color:#66d9ef">@Component</span>({
-  <span style="color:#a6e22e">selector</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;app-root&#39;</span>,
-  <span style="color:#a6e22e">templateUrl</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;./app.component.html&#39;</span>,
-  <span style="color:#a6e22e">styleUrls</span><span style="color:#f92672">:</span> [<span style="color:#e6db74">&#39;./app.component.css&#39;</span>]
-})
-<span style="color:#66d9ef">export</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">AppComponent</span> {
-
-  <span style="color:#a6e22e">appServiceValue</span> : <span style="color:#66d9ef">any</span>;
-
-  <span style="color:#66d9ef">constructor</span>(<span style="color:#66d9ef">private</span> <span style="color:#a6e22e">appService</span> : <span style="color:#66d9ef">AppService</span>) { 
-    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">appServiceValue</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">appService</span>.<span style="color:#a6e22e">getRandomNumber</span>();
-  }
-}
-</code></pre></div><p><code>HomeComponent</code> -</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript"><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">Component</span>, <span style="color:#a6e22e">OnInit</span> } <span style="color:#66d9ef">from</span> <span style="color:#e6db74">&#39;@angular/core&#39;</span>;
-<span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">AppService</span> } <span style="color:#66d9ef">from</span> <span style="color:#e6db74">&#39;../app.service&#39;</span>;
-
-<span style="color:#66d9ef">@Component</span>({
-  <span style="color:#a6e22e">selector</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;app-home&#39;</span>,
-  <span style="color:#a6e22e">templateUrl</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;./home.component.html&#39;</span>,
-  <span style="color:#a6e22e">styleUrls</span><span style="color:#f92672">:</span> [<span style="color:#e6db74">&#39;./home.component.css&#39;</span>],
-  <span style="color:#75715e">//providers: [AppService]
-</span><span style="color:#75715e"></span>})
-<span style="color:#66d9ef">export</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">HomeComponent</span> {
-
-  <span style="color:#a6e22e">appServiceValue</span> : <span style="color:#66d9ef">any</span>;
-
-  <span style="color:#66d9ef">constructor</span>(<span style="color:#66d9ef">private</span> <span style="color:#a6e22e">appService</span> : <span style="color:#66d9ef">AppService</span>) { 
-    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">appServiceValue</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">appService</span>.<span style="color:#a6e22e">getRandomNumber</span>();
-  }
-
-}
-</code></pre></div><p>We will then display the random number in both app and home component by calling getRandomNumber method and passing the value to view. When we load the application we can see both components get the same random number as they both received same single instance of <code>AppService</code> from <code>Root Module injector</code>. This proves Angular services are singleton when they are registered only in <code>Root Module provider</code>.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-typescript" data-lang="typescript"><span style="display:flex;"><span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">Component</span> } <span style="color:#66d9ef">from</span> <span style="color:#e6db74">&#39;@angular/core&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">AppService</span> } <span style="color:#66d9ef">from</span> <span style="color:#e6db74">&#39;./app.service&#39;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">@Component</span>({
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">selector</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;app-root&#39;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">templateUrl</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;./app.component.html&#39;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">styleUrls</span><span style="color:#f92672">:</span> [<span style="color:#e6db74">&#39;./app.component.css&#39;</span>]
+</span></span><span style="display:flex;"><span>})
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">AppComponent</span> {
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">appServiceValue</span> : <span style="color:#66d9ef">any</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">constructor</span>(<span style="color:#66d9ef">private</span> <span style="color:#a6e22e">appService</span> : <span style="color:#66d9ef">AppService</span>) { 
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">appServiceValue</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">appService</span>.<span style="color:#a6e22e">getRandomNumber</span>();
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p><code>HomeComponent</code> -</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-typescript" data-lang="typescript"><span style="display:flex;"><span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">Component</span>, <span style="color:#a6e22e">OnInit</span> } <span style="color:#66d9ef">from</span> <span style="color:#e6db74">&#39;@angular/core&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">AppService</span> } <span style="color:#66d9ef">from</span> <span style="color:#e6db74">&#39;../app.service&#39;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">@Component</span>({
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">selector</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;app-home&#39;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">templateUrl</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;./home.component.html&#39;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">styleUrls</span><span style="color:#f92672">:</span> [<span style="color:#e6db74">&#39;./home.component.css&#39;</span>],
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">//providers: [AppService]
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>})
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">HomeComponent</span> {
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">appServiceValue</span> : <span style="color:#66d9ef">any</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">constructor</span>(<span style="color:#66d9ef">private</span> <span style="color:#a6e22e">appService</span> : <span style="color:#66d9ef">AppService</span>) { 
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">appServiceValue</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">appService</span>.<span style="color:#a6e22e">getRandomNumber</span>();
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>We will then display the random number in both app and home component by calling getRandomNumber method and passing the value to view. When we load the application we can see both components get the same random number as they both received same single instance of <code>AppService</code> from <code>Root Module injector</code>. This proves Angular services are singleton when they are registered only in <code>Root Module provider</code>.</p>
 <p><img loading="lazy" src="/images/singleton.webp#center" alt="Angular singleton service"  />
 </p>
 <p>Now let&rsquo;s register <code>AppService</code> also in <code>HomeComponent</code> provider and run the app. App and Home component displays two different random numbers because they both received two different instances of <code>AppService</code>. Thus we can say Angular services are not singleton when they are provided at different levels.</p>
